@@ -7,6 +7,9 @@ Loop
 {
     Run, microsoft-edge:https://steamdb.info/freepackages/
     Sleep, 10000
+    WinWait, ahk_exe MicrosoftEdge.exe
+    WinActivate, ahk_exe MicrosoftEdge.exe
+    WinMaximize, ahk_exe MicrosoftEdge.exe
     ControlClick, , ahk_exe MicrosoftEdge.exe, , , , , Activate these packages now
     Sleep, 30000
     WinClose, ahk_exe MicrosoftEdge.exe
