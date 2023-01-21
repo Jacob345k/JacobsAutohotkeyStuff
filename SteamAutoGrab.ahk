@@ -11,7 +11,20 @@ Loop
     WinActivate, ahk_exe MicrosoftEdge.exe
     WinMaximize, ahk_exe MicrosoftEdge.exe
     ControlClick, , ahk_exe MicrosoftEdge.exe, , , , , Activate these packages now
-    Sleep, 30000
+    While (WinExist("ahk_exe MicrosoftEdge.exe"))
+    {
+        Sleep, 1000
+        IfWinNotActive, ahk_exe MicrosoftEdge.exe
+            continue
+        WinGetText, OutputVar, ahk_exe MicrosoftEdge.exe
+        if (OutputVar != "")
+        {
+            if (InStr(OutputVar, "Rate limited by Steam"))
+            {
+                break
+            }
+        }
+    }
     WinClose, ahk_exe MicrosoftEdge.exe
     Sleep, 3600000
 }
